@@ -1,0 +1,652 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Motiondash Technologies , HiSeats API Documentation",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/transaction/create": {
+            "post": {
+                "tags": [
+                    "ticket-transaction-controller"
+                ],
+                "operationId": "createBooking",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TransactionRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/create": {
+            "post": {
+                "tags": [
+                    "ticket-management-controller"
+                ],
+                "operationId": "createTicket",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TicketDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/update/{providerId}": {
+            "post": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "updateProvider",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TicketProviderAccountCreationDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/signUp": {
+            "post": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "signUpProvider",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/signIn": {
+            "post": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "signInProvider",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payments/payment-result": {
+            "post": {
+                "tags": [
+                    "payment-controller"
+                ],
+                "operationId": "paymentResult",
+                "parameters": [
+                    {
+                        "name": "requestBody",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transaction/getTransaction/{reference}": {
+            "get": {
+                "tags": [
+                    "ticket-transaction-controller"
+                ],
+                "operationId": "getBooking",
+                "parameters": [
+                    {
+                        "name": "reference",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/getall": {
+            "get": {
+                "tags": [
+                    "ticket-management-controller"
+                ],
+                "operationId": "getAllTickets",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/getPaid/{ticketNumber}": {
+            "get": {
+                "tags": [
+                    "ticket-management-controller"
+                ],
+                "operationId": "getPaidTicket",
+                "parameters": [
+                    {
+                        "name": "ticketNumber",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/getAllPaid": {
+            "get": {
+                "tags": [
+                    "ticket-management-controller"
+                ],
+                "operationId": "getAllPaidTickets",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/get/{ticketReference}": {
+            "get": {
+                "tags": [
+                    "ticket-management-controller"
+                ],
+                "operationId": "getTicket",
+                "parameters": [
+                    {
+                        "name": "ticketReference",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/me": {
+            "get": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "authenticatedUser",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/get/{providerId}": {
+            "get": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "getProvider",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/providers/get/all": {
+            "get": {
+                "tags": [
+                    "provider-controller"
+                ],
+                "operationId": "getAllProviders",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payments/payment-status/{reference}": {
+            "get": {
+                "tags": [
+                    "payment-controller"
+                ],
+                "operationId": "getPaymentStatus",
+                "parameters": [
+                    {
+                        "name": "reference",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payments/payment-return": {
+            "get": {
+                "tags": [
+                    "payment-controller"
+                ],
+                "operationId": "paymentReturn",
+                "parameters": [
+                    {
+                        "name": "requestBody",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payments/get/all": {
+            "get": {
+                "tags": [
+                    "payment-controller"
+                ],
+                "operationId": "getAllPayments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "/": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenericResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "TransactionRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "customerId": {
+                        "type": "string"
+                    },
+                    "numTickets": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "enum": [
+                            "USD",
+                            "ZWG"
+                        ]
+                    },
+                    "ticketReference": {
+                        "type": "string"
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "enum": [
+                            "ECOCASH",
+                            "BANK_TRANSFER",
+                            "OMARI",
+                            "CASH",
+                            "INNBUCKS",
+                            "MUKURU",
+                            "ZIMSWITCH_ECOMMERCE",
+                            "ONEMONEY",
+                            "TELECASH"
+                        ]
+                    },
+                    "paymentDetails": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "GenericResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "debugMessage": {
+                        "type": "string"
+                    },
+                    "statusCode": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "TicketDTO": {
+                "type": "object",
+                "properties": {
+                    "price": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "eventTitle": {
+                        "type": "string"
+                    },
+                    "eventDescription": {
+                        "type": "string"
+                    },
+                    "eventLocation": {
+                        "type": "string"
+                    },
+                    "ticketProviderId": {
+                        "type": "string"
+                    },
+                    "totalTicketsProvided": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "available": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "TicketProviderAccountCreationDTO": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "nationalId": {
+                        "type": "string"
+                    },
+                    "primaryAuthenticationMethod": {
+                        "type": "string",
+                        "enum": [
+                            "EMAIL",
+                            "PHONE_NUMBER"
+                        ]
+                    }
+                }
+            },
+            "AuthDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "authenticationMethod": {
+                        "type": "string",
+                        "enum": [
+                            "EMAIL",
+                            "PHONE_NUMBER"
+                        ]
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
